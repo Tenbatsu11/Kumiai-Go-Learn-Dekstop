@@ -89,6 +89,10 @@ public class ApiClient {
         return getList("kanji/search?kanjiName=" + kanjiName, new TypeToken<List<Kanji>>(){}.getType());
     }
 
+    public static List<Kanji> searchKanjiByMeaning(String description) throws IOException {
+        return getList("kanji/description/" + description, new TypeToken<List<Kanji>>(){}.getType());
+    }
+
     // Vocabulaire
     public static List<Vocabulaire> getAllVocabulaire() throws IOException {
         return getList("vocabulaire", new TypeToken<List<Vocabulaire>>(){}.getType());
@@ -100,6 +104,10 @@ public class ApiClient {
 
     public static List<Vocabulaire> searchVocabulaire(String word) throws IOException {
         return getList("vocabulaire/search?word=" + word, new TypeToken<List<Vocabulaire>>(){}.getType());
+    }
+
+    public static List<Vocabulaire> searchVocabulaireByTranslation(String traduction) throws IOException {
+        return getList("vocabulaire/traduction/"+traduction, new TypeToken<List<Vocabulaire>>(){}.getType());
     }
 
     // Users

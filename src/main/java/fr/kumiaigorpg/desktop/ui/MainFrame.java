@@ -17,7 +17,7 @@ public class MainFrame extends JFrame {
 
     public MainFrame() {
         setTitle("Kumiai Go RPG");
-        setSize(1000, 700);
+        setSize(1300, 900);
         setMinimumSize(new Dimension(800, 550));
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
