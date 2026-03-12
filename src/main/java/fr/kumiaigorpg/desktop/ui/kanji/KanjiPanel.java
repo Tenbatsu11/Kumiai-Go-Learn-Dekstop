@@ -113,10 +113,10 @@ public class KanjiPanel extends JPanel {
 
     private void applyFilter() {
         String query  = searchField.getText().trim();
-        String query2  = searchField2.getText().trim();
+        String query2  = searchField2.getText().trim().toLowerCase();
         String niveau = (String) niveauCombo.getSelectedItem();
         if (!query.isEmpty()) loadData("search", query);
-        if (!query2.isEmpty()) loadData("search2", query2);
+        else if (!query2.isEmpty()) loadData("search2", query2);
         else if (!"Tous".equals(niveau)) loadData("niveau", niveau);
         else loadData("all", null);
     }
@@ -128,7 +128,25 @@ public class KanjiPanel extends JPanel {
             @Override protected List<Kanji> doInBackground() throws Exception {
                 return switch (mode) {
                     case "search" -> ApiClient.searchKanji(param);
-                    case "search2" -> ApiClient.searchKanjiByMeaning(param);
+                    case "search2" -> {
+                        String[] mots = param.split("[\\s,]+");
+                        yield ApiClient.getAllKanji().stream()
+                                .filter(k -> {
+                                    if (k.getDescription() == null) return false;
+                                    String[] termes = k.getDescription().toLowerCase().split("[\\s,]+");
+                                    for (String mot : mots) {
+                                        boolean trouve = false;
+                                        for (String terme : termes) {
+                                            if (terme.contains(mot)) { trouve = true;
+                                                break;
+                                            }
+                                        }
+                                        if (!trouve) return false;
+                                    }
+                                    return true;
+                                })
+                                .collect(java.util.stream.Collectors.toList());
+                    }
                     case "niveau" -> ApiClient.getKanjiByNiveau(param);
                     default       -> ApiClient.getAllKanji();
                 };
