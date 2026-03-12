@@ -29,7 +29,7 @@ public class ProfilPanel extends JPanel {
         content.setBackground(Theme.BG);
         content.setBorder(new EmptyBorder(24, 40, 24, 40));
 
-        // ── Avatar ────────────────────────────────────────────
+        // Avatar
         JLabel avatar = new JLabel("👤", SwingConstants.CENTER);
         avatar.setFont(new Font("SansSerif", Font.PLAIN, 64));
         avatar.setAlignmentX(LEFT_ALIGNMENT);

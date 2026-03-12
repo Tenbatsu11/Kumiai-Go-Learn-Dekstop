@@ -38,7 +38,7 @@ public class AbonnementPanel extends JPanel {
 
         content.add(lblActuel);
 
-        // ── Cartes côte à côte ────────────────────────────────
+        // Side Panel
         JPanel cardsPanel = new JPanel(new GridLayout(1, 2, 20, 0));
         cardsPanel.setOpaque(false);
         cardsPanel.setMaximumSize(new Dimension(800, 380));

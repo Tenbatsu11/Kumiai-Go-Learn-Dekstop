@@ -18,7 +18,7 @@ public class ApiClient {
     private static final Gson gson = new Gson();
     private static final MediaType JSON = MediaType.parse("application/json");
 
-    // ─── SESSION ──────────────────────────────────────────────
+    // Session
     private static String token;
     private static String userId;
     private static String username;
@@ -26,7 +26,7 @@ public class ApiClient {
     private static String userlvl;
     private static String abonnement;
 
-    // ─── AUTH ─────────────────────────────────────────────────
+    // Auth
     public static boolean login(String email, String password) throws IOException {
         String body = gson.toJson(Map.of("email", email, "password", password));
         Request req = new Request.Builder()
@@ -76,33 +76,33 @@ public class ApiClient {
 
     public static boolean isLoggedIn() { return token != null; }
 
-    // ─── KANJI ────────────────────────────────────────────────
+    // Kanji
     public static List<Kanji> getAllKanji() throws IOException {
         return getList("kanji", new TypeToken<List<Kanji>>(){}.getType());
     }
 
     public static List<Kanji> getKanjiByNiveau(String niveau) throws IOException {
-        return getList("kanji/niveau/" + niveau, new TypeToken<List<Kanji>>(){}.getType());
+        return getList("kanji/jlptlvl/" + niveau, new TypeToken<List<Kanji>>(){}.getType());
     }
 
     public static List<Kanji> searchKanji(String kanjiName) throws IOException {
         return getList("kanji/search?kanjiName=" + kanjiName, new TypeToken<List<Kanji>>(){}.getType());
     }
 
-    // ─── VOCABULAIRE ──────────────────────────────────────────
+    // Vocabulaire
     public static List<Vocabulaire> getAllVocabulaire() throws IOException {
         return getList("vocabulaire", new TypeToken<List<Vocabulaire>>(){}.getType());
     }
 
     public static List<Vocabulaire> getVocabulaireByNiveau(String niveau) throws IOException {
-        return getList("vocabulaire/niveau/" + niveau, new TypeToken<List<Vocabulaire>>(){}.getType());
+        return getList("vocabulaire/jlptlvl/" + niveau, new TypeToken<List<Vocabulaire>>(){}.getType());
     }
 
     public static List<Vocabulaire> searchVocabulaire(String word) throws IOException {
         return getList("vocabulaire/search?word=" + word, new TypeToken<List<Vocabulaire>>(){}.getType());
     }
 
-    // ─── USER ─────────────────────────────────────────────────
+    // Users
     public static boolean updateUser(String newUsername, String newEmail) throws IOException {
         User u = new User();
         u.setUsername(newUsername);
@@ -160,7 +160,7 @@ public class ApiClient {
         abonnement = abo;
     }
 
-    // ─── GETTERS SESSION ──────────────────────────────────────
+    // Getters et Setters
     public static String getToken() { return token; }
     public static String getUserId() { return userId; }
     public static String getUsername()    { return username; }
@@ -169,7 +169,7 @@ public class ApiClient {
     public static String getAbonnement()  { return abonnement; }
     public static void   setAbonnement(String a) { abonnement = a; }
 
-    // ─── HELPER ───────────────────────────────────────────────
+
     private static <T> T getList(String endpoint, Type type) throws IOException {
         Request req = new Request.Builder()
                 .url(BASE_URL + endpoint)

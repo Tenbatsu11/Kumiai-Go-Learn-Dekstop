@@ -36,6 +36,7 @@ public class VocabulairePanel extends JPanel {
         searchField.setFont(new Font("MS Gothic", Font.PLAIN, 14));
         searchField.setPreferredSize(new Dimension(220, 36));
         niveauCombo = new JComboBox<>(new String[]{"Tous", "N5", "N4", "N3", "N2", "N1"});
+        System.out.println(niveauCombo.getSelectedItem());
         niveauCombo.setFont(Theme.FONT_BODY);
         niveauCombo.setPreferredSize(new Dimension(100, 36));
         JButton btnSearch = Theme.primaryButton("Rechercher");

@@ -11,17 +11,17 @@ import java.util.UUID;
 
 public class LoginFrame extends JFrame {
 
-    // ── Panels ────────────────────────────────────────────────
+
     private JPanel cardPanel;
     private CardLayout cardLayout;
 
-    // ── Champs Login ──────────────────────────────────────────
+
     private JTextField loginEmailField;
     private JPasswordField loginPasswordField;
     private JLabel loginMessageLabel;
     private JButton loginBtn;
 
-    // ── Champs Inscription ────────────────────────────────────
+
     private JTextField regUsernameField;
     private JTextField regEmailField;
     private JPasswordField regPasswordField;
@@ -36,7 +36,7 @@ public class LoginFrame extends JFrame {
                 new MainFrame().setVisible(true);
                 dispose();
             });
-            return; // ← ne construit pas l'UI de login
+            return;
         }
         setTitle("Kumiai Go RPG — Connexion");
         setSize(720, 840);
@@ -50,7 +50,7 @@ public class LoginFrame extends JFrame {
         JPanel root = new JPanel(new BorderLayout());
         root.setBackground(Theme.BG);
 
-        // ── Bandeau haut ──────────────────────────────────────
+
         JPanel banner = new JPanel();
         banner.setBackground(Theme.RED);
         banner.setLayout(new BoxLayout(banner, BoxLayout.Y_AXIS));
@@ -78,7 +78,7 @@ public class LoginFrame extends JFrame {
         banner.add(Box.createVerticalStrut(2));
         banner.add(subtitle);
 
-        // ── CardLayout pour switcher Login / Inscription ───────
+        // Cartes Inscription/Login
         cardLayout = new CardLayout();
         cardPanel  = new JPanel(cardLayout);
         cardPanel.setBackground(Theme.BG);
@@ -90,9 +90,7 @@ public class LoginFrame extends JFrame {
         setContentPane(root);
     }
 
-    // ══════════════════════════════════════════════════════════
-    //  PANEL LOGIN
-    // ══════════════════════════════════════════════════════════
+    // Panel Login
     private JPanel buildLoginPanel() {
         JPanel form = new JPanel();
         form.setLayout(new BoxLayout(form, BoxLayout.Y_AXIS));
@@ -114,11 +112,11 @@ public class LoginFrame extends JFrame {
 
         form.add(Box.createVerticalStrut(10));
 
-        // ── Séparateur ────────────────────────────────────────
+
         form.add(buildSeparator("ou"));
         form.add(Box.createVerticalStrut(10));
 
-        // ── Bouton vers inscription ───────────────────────────
+        // Bouton vers Inscription
         JButton goRegisterBtn = Theme.secondaryButton("Créer un compte");
         goRegisterBtn.setAlignmentX(Component.CENTER_ALIGNMENT);
         goRegisterBtn.setMaximumSize(new Dimension(Integer.MAX_VALUE, 42));
@@ -129,7 +127,7 @@ public class LoginFrame extends JFrame {
         loginMessageLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
         form.add(loginMessageLabel);
 
-        // ── Actions ───────────────────────────────────────────
+
         loginBtn.addActionListener(e -> handleLogin());
         loginPasswordField.addActionListener(e -> handleLogin());
         goRegisterBtn.addActionListener(e -> {
@@ -141,9 +139,7 @@ public class LoginFrame extends JFrame {
         return form;
     }
 
-    // ══════════════════════════════════════════════════════════
-    //  PANEL INSCRIPTION
-    // ══════════════════════════════════════════════════════════
+    // Panel Inscription
     private JPanel buildRegisterPanel() {
         JPanel form = new JPanel();
         form.setLayout(new BoxLayout(form, BoxLayout.Y_AXIS));
@@ -182,7 +178,7 @@ public class LoginFrame extends JFrame {
 
         form.add(Box.createVerticalStrut(10));
 
-        // ── Bouton retour login ───────────────────────────────
+        // Bouton retour
         JButton goLoginBtn = Theme.secondaryButton("← Déjà un compte ? Se connecter");
         goLoginBtn.setAlignmentX(Component.CENTER_ALIGNMENT);
         goLoginBtn.setMaximumSize(new Dimension(Integer.MAX_VALUE, 42));
@@ -193,7 +189,7 @@ public class LoginFrame extends JFrame {
         regMessageLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
         form.add(regMessageLabel);
 
-        // ── Actions ───────────────────────────────────────────
+
         registerBtn.addActionListener(e -> handleRegister());
         goLoginBtn.addActionListener(e -> {
             regMessageLabel.setText("");
@@ -204,9 +200,7 @@ public class LoginFrame extends JFrame {
         return form;
     }
 
-    // ══════════════════════════════════════════════════════════
-    //  LOGIQUE LOGIN
-    // ══════════════════════════════════════════════════════════
+    // Login
     private void handleLogin() {
         String email    = loginEmailField.getText().trim();
         String password = new String(loginPasswordField.getPassword());
@@ -243,9 +237,7 @@ public class LoginFrame extends JFrame {
         }.execute();
     }
 
-    // ══════════════════════════════════════════════════════════
-    //  LOGIQUE INSCRIPTION
-    // ══════════════════════════════════════════════════════════
+    // Inscription
     private void handleRegister() {
         String username  = regUsernameField.getText().trim();
         String email     = regEmailField.getText().trim();
@@ -315,9 +307,7 @@ public class LoginFrame extends JFrame {
         }.execute();
     }
 
-    // ══════════════════════════════════════════════════════════
-    //  HELPERS UI
-    // ══════════════════════════════════════════════════════════
+    // UI
     private void addRow(JPanel panel, String labelText, JComponent field) {
         JLabel lbl = Theme.label(labelText, Theme.FONT_SMALL, Theme.TEXT_MUTED);
         lbl.setAlignmentX(Component.LEFT_ALIGNMENT);

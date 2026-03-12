@@ -28,9 +28,9 @@ public class MainFrame extends JFrame {
         JTabbedPane tabs = new JTabbedPane(JTabbedPane.LEFT);
         tabs.setFont(new Font("Segoe UI", Font.BOLD, 13));
         tabs.setBackground(new Color(40, 40, 40));
-        tabs.setForeground(Color.WHITE);
+        tabs.setForeground(Color.BLACK);
 
-        // ── 5 onglets ─────────────────────────────────────────
+        // Onglets
         tabs.addTab("Accueil",       new HomePanel());
         tabs.addTab("Kanjis",         new KanjiPanel());
         tabs.addTab("Vocabulaire",    new VocabulairePanel());
@@ -38,10 +38,10 @@ public class MainFrame extends JFrame {
         tabs.addTab("Profil",         new ProfilPanel(this));
         tabs.addTab("Kumiai Go RPG", new KumiaiGoRPG());
 
-        // Style des onglets
+        // Style
         tabs.setTabLayoutPolicy(JTabbedPane.SCROLL_TAB_LAYOUT);
         UIManager.put("TabbedPane.selected",           new Color(211, 47, 47));
-        UIManager.put("TabbedPane.selectedForeground", Color.WHITE);
+        UIManager.put("TabbedPane.selectedForeground", Color.BLACK);
 
         setContentPane(tabs);
 

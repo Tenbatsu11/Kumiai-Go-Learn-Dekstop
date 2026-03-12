@@ -23,7 +23,7 @@ public class HomePanel extends JPanel {
         content.setBackground(Theme.BG);
         content.setBorder(new EmptyBorder(24, 32, 24, 32));
 
-        // ── Carte de bienvenue ────────────────────────────────
+        // Welcome page
         JPanel welcomeCard = new JPanel();
         welcomeCard.setLayout(new BoxLayout(welcomeCard, BoxLayout.Y_AXIS));
         welcomeCard.setBackground(Theme.RED);
@@ -51,7 +51,7 @@ public class HomePanel extends JPanel {
         welcomeCard.add(Box.createVerticalStrut(2));
         welcomeCard.add(lblAbo);
 
-        // ── Présentation ─────────────────────────────────────
+        // Présentation
         JPanel aboutCard = Theme.card();
         aboutCard.setLayout(new BoxLayout(aboutCard, BoxLayout.Y_AXIS));
         aboutCard.setMaximumSize(new Dimension(Integer.MAX_VALUE, 200));
@@ -77,7 +77,7 @@ public class HomePanel extends JPanel {
         aboutCard.add(aboutTitle);
         aboutCard.add(aboutText);
 
-        // ── Niveaux JLPT ──────────────────────────────────────
+        // Niveau JLPT
         JPanel niveauxTitle = new JPanel(new FlowLayout(FlowLayout.LEFT, 0, 0));
         niveauxTitle.setOpaque(false);
         niveauxTitle.setMaximumSize(new Dimension(Integer.MAX_VALUE, 40));
