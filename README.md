@@ -12,7 +12,7 @@ As of now, the app includes multiples categories found on the Kumiai Go Learn we
  - Vocabulaire
  - Profile
 
-But the app includes a new tab only for this version of Kumiai Go Learn, which is the Kumiai Go RPG prototype.
+But the app includes a new tabs only for this version of Kumiai Go Learn, which are the Kumiai Go RPG prototype and subscription tab.
 More informations on the Kumiai Go RPG repository.
 
 ----------------------------------------
