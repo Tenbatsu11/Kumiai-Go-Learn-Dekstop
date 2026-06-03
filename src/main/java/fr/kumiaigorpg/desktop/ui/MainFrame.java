@@ -3,6 +3,7 @@ package fr.kumiaigorpg.desktop.ui;
 import fr.kumiaigorpg.desktop.rpg.KumiaiGoRPG;
 import fr.kumiaigorpg.desktop.ui.home.HomePanel;
 import fr.kumiaigorpg.desktop.ui.kanji.KanjiPanel;
+import fr.kumiaigorpg.desktop.ui.quiz.QuizPanel;
 import fr.kumiaigorpg.desktop.ui.vocabulaire.VocabulairePanel;
 import fr.kumiaigorpg.desktop.ui.abonnement.AbonnementPanel;
 import fr.kumiaigorpg.desktop.ui.profil.ProfilPanel;
@@ -14,6 +15,7 @@ import java.awt.*;
 public class MainFrame extends JFrame {
     private HomePanel homePanel;
     private ProfilPanel profilPanel;
+    private KumiaiGoRPG rpgPanel;
 
     public MainFrame() {
         setTitle("Kumiai Go RPG");
@@ -35,8 +37,10 @@ public class MainFrame extends JFrame {
         tabs.addTab("Kanjis",         new KanjiPanel());
         tabs.addTab("Vocabulaire",    new VocabulairePanel());
         tabs.addTab("Abonnement",     new AbonnementPanel(this));
+        tabs.addTab("Quizz",         new QuizPanel());
         tabs.addTab("Profil",         new ProfilPanel(this));
-        tabs.addTab("Kumiai Go RPG", new KumiaiGoRPG());
+        rpgPanel = new KumiaiGoRPG();
+        tabs.addTab("Kumiai Go RPG", rpgPanel);
 
         // Style
         tabs.setTabLayoutPolicy(JTabbedPane.SCROLL_TAB_LAYOUT);
@@ -61,5 +65,6 @@ public class MainFrame extends JFrame {
     public void refreshAll() {
         if (homePanel != null)   homePanel.refresh();
         if (profilPanel != null) profilPanel.refresh();
+        if (rpgPanel != null)    rpgPanel.refresh();
     }
 }

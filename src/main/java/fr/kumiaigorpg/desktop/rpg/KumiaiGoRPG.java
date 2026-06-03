@@ -1,5 +1,6 @@
 package fr.kumiaigorpg.desktop.rpg;
 
+import fr.kumiaigorpg.desktop.api.ApiClient;
 import fr.kumiaigorpg.desktop.utils.Theme;
 
 import javax.swing.*;
@@ -15,7 +16,11 @@ public class KumiaiGoRPG extends JPanel {
         setLayout(new BorderLayout());
         setBackground(Theme.BG);
         add(Theme.headerPanel("Kumiai GO RPG"), BorderLayout.NORTH);
-        add(buildContent(), BorderLayout.CENTER);
+        if ("PREMIUM".equals(ApiClient.getAbonnement())) {
+            add(buildContent(), BorderLayout.CENTER);
+        } else {
+            add(buildLockedContent(), BorderLayout.CENTER);
+        }
     }
     private JScrollPane buildContent() {
         JPanel content = new JPanel();
@@ -61,6 +66,44 @@ public class KumiaiGoRPG extends JPanel {
         scroll.setBorder(null);
         scroll.getVerticalScrollBar().setUnitIncrement(16);
         return scroll;
+    }
+
+    private JPanel buildLockedContent() {
+        JPanel panel = new JPanel();
+        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+        panel.setBackground(Theme.BG);
+        panel.setBorder(new EmptyBorder(60, 40, 40, 40));
+
+        JLabel icon = new JLabel("🔒", SwingConstants.CENTER);
+        icon.setFont(new Font("SansSerif", Font.PLAIN, 64));
+        icon.setAlignmentX(CENTER_ALIGNMENT);
+
+        JLabel titre = Theme.label("Contenu réservé aux membres Premium",
+                Theme.FONT_TITLE, Theme.TEXT);
+        titre.setAlignmentX(CENTER_ALIGNMENT);
+        titre.setBorder(new EmptyBorder(16, 0, 12, 0));
+
+        JLabel desc = Theme.label("Passe à l'offre Premium pour accéder à Kumiai GO RPG.",
+                Theme.FONT_BODY, Theme.TEXT_MUTED);
+        desc.setAlignmentX(CENTER_ALIGNMENT);
+
+        panel.add(icon);
+        panel.add(titre);
+        panel.add(desc);
+
+        return panel;
+    }
+
+    public void refresh() {
+        removeAll();
+        add(Theme.headerPanel("Kumiai GO RPG"), BorderLayout.NORTH);
+        if ("PREMIUM".equals(ApiClient.getAbonnement())) {
+            add(buildContent(), BorderLayout.CENTER);
+        } else {
+            add(buildLockedContent(), BorderLayout.CENTER);
+        }
+        revalidate();
+        repaint();
     }
 }
 

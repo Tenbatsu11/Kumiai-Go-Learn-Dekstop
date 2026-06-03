@@ -1,4 +1,4 @@
-/*package fr.kumiaigorpg.desktop.test;
+package fr.kumiaigorpg.desktop.test;
 
 import java.awt.*;
 
@@ -14,4 +14,4 @@ public class FontTest {
             }
         }
     }
-}*/
+}
