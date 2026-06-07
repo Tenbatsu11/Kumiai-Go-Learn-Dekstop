@@ -62,7 +62,7 @@ To connect to your Kumiai Go RPG API:
 
 1. Open: `src/main/java/fr/kumiaigorpg/desktop/api/ApiClient.java`
 2. Update the API URL to match your local or remote Spring Boot API instance
-3. For detailed API setup instructions, refer to the [Kumiai Go RPG repository](https://github.com/Tenbatsu11/Kumiai-Go-RPG)
+3. For detailed API setup instructions, refer to the [Kumiai Go RPG repository](https://github.com/Tenbatsu11/kumiai-rpg-api)
 
 ## Current Development Status
 
@@ -85,11 +85,3 @@ A new quiz system has been added to the dedicated quiz tab. This feature allows 
 - Progression system not yet implemented
 - Database must be manually configured before use
 
-## Related Projects
-
-- [Kumiai Go RPG](https://github.com/Tenbatsu11/Kumiai-Go-RPG) – The backend API and RPG engine
-- [Kumiai Go Learn Website](https://kumiaigolearn.com) – The web version of the application
-
----
-
-Last updated: June 4, 2026
