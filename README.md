@@ -62,7 +62,7 @@ To connect to your Kumiai Go RPG API:
 
 1. Open: `src/main/java/fr/kumiaigorpg/desktop/api/ApiClient.java`
 2. Update the API URL to match your local or remote Spring Boot API instance
-3. For detailed API setup instructions, refer to the [Kumiai Go RPG repository](https://github.com/Tenbatsu11/kumiai-rpg-api)
+3. For detailed API setup instructions, refer to the [Kumiai Go RPG API Repository](https://github.com/Tenbatsu11/kumiai-rpg-api)
 
 ## Current Development Status
 
