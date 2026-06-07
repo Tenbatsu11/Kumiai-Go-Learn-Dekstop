@@ -1,28 +1,95 @@
-App developped for Kumiai Go Learn in java
+# Kumiai Go Learn Desktop
 
-----------------------------------------
+A Java-based desktop application for [Kumiai Go Learn](https://kumiaigolearn.com), featuring exclusive integrations and a new interactive quiz system.
 
-This app is the desktop version of the Kumiai Go Learn website and adds some new integration only available through this version of the learning interface.
+## Table of Contents
 
-To use the application, you need to have a database connected with the spring boot api for kumiai go rpg and the DB set up. 
-Else, you would not be able to access the entirety of the app and the Kumiai Go RPG. 
+- [Overview](#overview)
+- [Features](#features)
+- [Prerequisites](#prerequisites)
+- [Installation](#installation)
+- [Configuration](#configuration)
+- [Current Development Status](#current-development-status)
+- [Known Limitations](#known-limitations)
+- [Related Projects](#related-projects)
 
-As of now, the app includes multiples categories found on the Kumiai Go Learn website such as : 
- - Kanji
- - Vocabulaire
- - Profile
+## Overview
 
-But the app includes a new tabs only for this version of Kumiai Go Learn, which are the Kumiai Go RPG prototype and subscription tab.
-More informations on the Kumiai Go RPG repository.
+This desktop application is an enhanced version of the Kumiai Go Learn website, providing exclusive features and integrations unavailable in the web version. It includes access to the Kumiai Go RPG prototype and additional learning tools designed specifically for desktop users.
 
-----------------------------------------
+## Features
 
-To set up the desktop app in local dev environment you need to modify the api URL found in src/main/java/fr/kumiaigorpg/desktop/api/ApiClient.java , with your own api URL. 
-For more informations on how to set up the Kumiai Go RPG api, please follow the instructions on the dedicated repository.
+- **Kanji Learning** – Study kanji characters with interactive lessons
+- **Vocabulary** – Build your Japanese vocabulary
+- **User Profile** – Track your learning progress
+- **Kumiai Go RPG Prototype** – Exclusive RPG learning experience (desktop only)
+- **Subscription Management** – Manage your account subscription
+- **Quiz System** – Test your knowledge of kanji (currently in development)
 
+## Prerequisites
 
-----------------------------------------
-As of June 04 2026
-New feature in development.
-A quizz is available in the dedicated tab section. As of now, no filter per level is done, so keep in mind that all the kanjis are used for the quizz.
-In later updates, a progression system will be implemented and the quizz will adapt itself accordingly.
+Before setting up the desktop application, ensure you have:
+
+- **Java 11+** (or your project's required version)
+- **Maven** (for building the project)
+- **Spring Boot API** – The Kumiai Go RPG backend service running locally or remotely
+- **Database** – A configured database connected to the Spring Boot API
+- A running instance of the [Kumiai Go RPG API](https://github.com/Tenbatsu11/Kumiai-Go-RPG)
+
+## Installation
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/Tenbatsu11/Kumiai-Go-Learn-Dekstop.git
+   cd Kumiai-Go-Learn-Dekstop
+   ```
+
+2. **Build the project**
+   ```bash
+   mvn clean package
+   ```
+
+3. **Configure the API URL** (see [Configuration](#configuration) section below)
+
+4. **Run the application**
+   ```bash
+   mvn spring-boot:run
+   ```
+
+## Configuration
+
+To connect to your Kumiai Go RPG API:
+
+1. Open: `src/main/java/fr/kumiaigorpg/desktop/api/ApiClient.java`
+2. Update the API URL to match your local or remote Spring Boot API instance
+3. For detailed API setup instructions, refer to the [Kumiai Go RPG repository](https://github.com/Tenbatsu11/Kumiai-Go-RPG)
+
+## Current Development Status
+
+### Quiz Feature (In Development)
+
+A new quiz system has been added to the dedicated quiz tab. This feature allows users to test their knowledge of kanji characters.
+
+**Current Limitations:**
+- No filtering by difficulty level – all kanji are included in the quiz
+- No progression system yet
+
+**Planned Improvements:**
+- Difficulty level filtering
+- Progression system that adapts quiz difficulty based on user performance
+- Personalized quiz recommendations
+
+## Known Limitations
+
+- Quiz currently uses all available kanji levels without filtering
+- Progression system not yet implemented
+- Database must be manually configured before use
+
+## Related Projects
+
+- [Kumiai Go RPG](https://github.com/Tenbatsu11/Kumiai-Go-RPG) – The backend API and RPG engine
+- [Kumiai Go Learn Website](https://kumiaigolearn.com) – The web version of the application
+
+---
+
+Last updated: June 4, 2026
