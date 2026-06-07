@@ -291,26 +291,41 @@ public class QuizPanel extends JPanel {
                     List<Kanji> kanjis = ApiClient.getAllKanji();
                     Collections.shuffle(kanjis);
                     for (Kanji k : kanjis) {
+
+                        List<Kanji> autresKanjis = new ArrayList<>(kanjis);
+                        autresKanjis.remove(k);
+                        Collections.shuffle(autresKanjis);
+
                         if (k.getDescription() == null) continue;
-                        List<String> fausses = kanjis.stream()
-                                .filter(x -> !x.equals(k) && x.getDescription() != null)
+                        List<String> fausses = autresKanjis.stream()
+                                .filter(x -> x.getDescription() != null)
                                 .map(Kanji::getDescription)
+                                .distinct()
                                 .limit(3).toList();
                         if (fausses.size() < 3) continue;
                         qs.add(new QuizQuestion(
-                                k.getKanjiName(), k.getDescription(),
-                                fausses, k.getJlptLvl().toString()
+                                k.getKanjiName(),
+                                k.getDescription(),
+                                fausses,
+                                k.getJlptLvl().toString()
                         ));
                         if (qs.size() == nbQuestions) break;
                     }
                 } else {
                     List<Vocabulaire> mots = ApiClient.getAllVocabulaire();
                     Collections.shuffle(mots);
+
                     for (Vocabulaire v : mots) {
+
+                        List<Vocabulaire> autresMots = new ArrayList<>(mots);
+                        autresMots.remove(v);
+                        Collections.shuffle(autresMots);
+
                         if (v.getTraduction() == null) continue;
-                        List<String> fausses = mots.stream()
-                                .filter(x -> !x.equals(v) && x.getTraduction() != null)
+                        List<String> fausses = autresMots.stream()
+                                .filter(x -> x.getTraduction() != null)
                                 .map(Vocabulaire::getTraduction)
+                                .distinct()
                                 .limit(3).toList();
                         if (fausses.size() < 3) continue;
                         qs.add(new QuizQuestion(
