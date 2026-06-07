@@ -19,3 +19,10 @@ More informations on the Kumiai Go RPG repository.
 
 To set up the desktop app in local dev environment you need to modify the api URL found in src/main/java/fr/kumiaigorpg/desktop/api/ApiClient.java , with your own api URL. 
 For more informations on how to set up the Kumiai Go RPG api, please follow the instructions on the dedicated repository.
+
+
+----------------------------------------
+As of June 04 2026
+New feature in development.
+A quizz is available in the dedicated tab section. As of now, no filter per level is done, so keep in mind that all the kanjis are used for the quizz.
+In later updates, a progression system will be implemented and the quizz will adapt itself accordingly.
